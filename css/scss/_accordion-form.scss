@@ -1,0 +1,483 @@
+// ==========================================================================
+// Contenuto pannello accordion: form "Modulo di prenotazione alberghiera"
+// Struttura e misure prese dal file Figma (Dev Mode, frame 15:156)
+// ==========================================================================
+
+.accordion-form {
+  width: 100%;
+  max-width: $form-card-max-width;
+  margin: 0 auto;
+}
+
+.accordion-form__card {
+  background-color: $color-white;
+  border: 1px solid $color-input-border;
+  border-radius: $radius-md;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+  padding: 32px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  @include mq($bp-md) {
+    padding: 40px 40px;
+  }
+
+  @include mq($bp-lg) {
+    padding: 48px 100px;
+  }
+}
+
+.accordion-form__row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+  width: 100%;
+
+  @include mq($bp-md) {
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+  }
+}
+
+.accordion-form__col {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  min-width: 0;
+}
+
+.accordion-form__section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
+.accordion-form__section-title {
+  font-family: $font-heading;
+  font-weight: 700;
+  color: $color-primary;
+  font-size: clamp(1.2rem, 1rem + 0.8vw, 2rem); // 32px a 1440px
+  line-height: 1.1;
+  text-transform: uppercase;
+  margin: 0 0 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid $color-divider;
+}
+
+.accordion-form__fields {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+}
+
+.accordion-form__field-row {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+
+  @include mq($bp-sm) {
+    flex-direction: row;
+  }
+}
+
+.accordion-form__field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+  flex: 1 0 0;
+  min-width: 0;
+
+  label {
+    font-family: $font-form;
+    font-weight: 500;
+    font-size: 0.875rem;
+    color: $color-label;
+    text-transform: none;
+    letter-spacing: normal;
+  }
+}
+
+.accordion-form__input,
+.accordion-form__select,
+.accordion-form__textarea {
+  width: 100%;
+  background-color: $color-white;
+  border: 1px solid $color-input-border;
+  border-radius: $radius-md;
+  padding: 14px;
+  height: 48px;
+  font-family: $font-form;
+  font-size: 0.9375rem;
+  color: $color-text;
+  transition: border-color $transition-base;
+
+  &::placeholder {
+    color: $color-input-placeholder;
+  }
+
+  &:focus {
+    outline: none;
+    border-color: $color-primary;
+  }
+}
+
+.accordion-form__textarea {
+  height: auto;
+  min-height: 120px;
+  resize: vertical;
+  line-height: 1.4;
+}
+
+// Campo data con icona calendario
+.accordion-form__date {
+  position: relative;
+
+  .accordion-form__input {
+    padding-right: 44px;
+
+    // Nasconde l'icona calendario nativa del browser: usiamo la nostra SVG
+    // per restare fedeli all'icona definita nel file Figma.
+    &::-webkit-calendar-picker-indicator {
+      position: absolute;
+      right: 0;
+      width: 44px;
+      height: 100%;
+      opacity: 0;
+      cursor: pointer;
+    }
+  }
+
+  svg {
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 18px;
+    height: 18px;
+    color: $color-label;
+    pointer-events: none;
+  }
+}
+
+// Riquadro "Dettaglio camere"
+.accordion-form__box {
+  background-color: $color-panel-bg;
+  border-radius: $radius-md;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+}
+
+.accordion-form__box-title {
+  font-family: $font-form;
+  font-weight: 700;
+  font-size: 1rem;
+  color: $color-heading-dark;
+  margin: 0;
+}
+
+.stepper {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+.stepper__label {
+  font-size: 0.8125rem;
+  color: $color-label;
+}
+
+.stepper__control {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 40px;
+  padding: 0 8px;
+  background-color: $color-white;
+  border: 1px solid $color-input-border;
+  border-radius: $radius-md;
+}
+
+.stepper__btn {
+  @include button-reset;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border: 1px solid $color-input-border;
+  border-radius: 4px;
+  background-color: $color-white;
+  color: $color-text;
+  transition: background-color $transition-base, border-color $transition-base;
+
+  svg {
+    width: 12px;
+    height: 12px;
+  }
+
+  &:hover,
+  &:focus-visible {
+    border-color: $color-primary;
+    color: $color-primary;
+  }
+}
+
+.stepper__value {
+  font-family: $font-form;
+  font-weight: 600;
+  font-size: 0.875rem;
+  color: $color-text;
+  min-width: 24px;
+  text-align: center;
+}
+
+// Card "Trattamento desiderato"
+.treatment-options {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+}
+
+// Stati verificati sul file Figma (Dev Mode): Default, Hover, Selected.
+// Default: card bianca, bordo grigio, icona nera su cerchio bianco.
+// Hover (solo se non selezionata): card azzurro chiaro, bordo blu, icona
+// bianca su cerchio blu, testo blu.
+// Selected: card blu piena, icona blu su cerchio bianco, testo bianco.
+.treatment-card {
+  @include button-reset;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 20px;
+  text-align: center;
+  border: 2px solid $color-input-border;
+  border-radius: $radius-md;
+  background-color: $color-white;
+  transition: border-color $transition-base, background-color $transition-base;
+
+  &:hover:not(.is-selected),
+  &:focus-visible:not(.is-selected) {
+    background-color: $color-panel-bg;
+    border-color: $color-primary;
+
+    .treatment-card__icon {
+      background-color: $color-primary;
+      border-color: $color-primary;
+      color: $color-white;
+    }
+
+    .treatment-card__title,
+    .treatment-card__subtitle {
+      color: $color-primary;
+    }
+  }
+
+  &.is-selected {
+    background-color: $color-primary;
+    border-color: $color-primary;
+
+    .treatment-card__icon {
+      background-color: $color-white;
+      border-color: $color-white;
+      color: $color-primary;
+    }
+
+    .treatment-card__title,
+    .treatment-card__subtitle {
+      color: $color-white;
+    }
+  }
+}
+
+.treatment-card__icon {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border: 1px solid $color-input-border;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $color-heading-dark; // icona nera nello stato di default (da Figma)
+  transition: background-color $transition-base, border-color $transition-base, color $transition-base;
+
+  svg {
+    // Le icone (asset SVG forniti dal cliente) hanno proporzioni diverse
+    // tra loro: si mantiene l'aspect-ratio nativo, con 20px come misura
+    // massima su entrambi gli assi (dimensione dell'icona da Figma).
+    width: auto;
+    height: auto;
+    max-width: 20px;
+    max-height: 20px;
+  }
+}
+
+.treatment-card__title {
+  font-family: $font-form;
+  font-weight: 700;
+  font-size: 1rem;
+  color: $color-heading-dark; // testo nero nello stato di default (da Figma)
+  margin: 0;
+  transition: color $transition-base;
+}
+
+.treatment-card__subtitle {
+  font-family: $font-form;
+  font-size: 0.8125rem;
+  color: $color-label;
+  opacity: 0.7; // da Figma: stesso colore del titolo principale, opacità 70%
+  margin: 4px 0 0;
+  transition: color $transition-base;
+}
+
+.accordion-form__submit-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  width: 100%;
+  padding-top: 8px;
+}
+
+.accordion-form__submit {
+  @include button-reset;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 64px;
+  padding: 0 30px;
+  background-color: $color-primary;
+  color: $color-white;
+  border-radius: 6px;
+  font-family: $font-heading;
+  font-weight: 700;
+  font-size: clamp(1.1rem, 1vw + 0.9rem, 2rem); // 32px a 1440px
+  text-transform: uppercase;
+  transition: background-color $transition-base;
+
+  &:hover,
+  &:focus-visible {
+    background-color: $color-primary-darker; // da Figma (nodo 41:33)
+  }
+}
+
+// Selettore "Tipologia di mezzo" (Accrediti Area Team): stessa card di
+// .treatment-card ma disposta su una riga di 3 colonne invece che impilata.
+.vehicle-options {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+
+  @include mq($bp-sm) {
+    flex-direction: row;
+    gap: 22px;
+  }
+
+  .treatment-card {
+    @include mq($bp-sm) {
+      flex: 1 1 0;
+      min-width: 0;
+    }
+  }
+}
+
+.accordion-form__hint {
+  font-size: 0.9375rem;
+  color: $color-input-placeholder;
+  margin: -8px 0 0;
+}
+
+.vehicle-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
+.vehicle-entry {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  padding: 16px;
+  background-color: $color-white;
+  border: 1px solid #ebebeb;
+  border-radius: $radius-md;
+
+  @include mq($bp-sm) {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+}
+
+.vehicle-entry__remove {
+  @include button-reset;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: $color-text-light;
+  transition: background-color $transition-base, color $transition-base;
+
+  svg {
+    width: 12px;
+    height: 12px;
+  }
+
+  &:hover,
+  &:focus-visible {
+    background-color: $color-off-white;
+    color: $color-primary;
+  }
+}
+
+.btn-add-vehicle {
+  @include button-reset;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 43px;
+  padding: 12px 24px;
+  align-self: flex-start;
+  border: 2px solid $color-primary;
+  border-radius: $radius-md;
+  background-color: transparent;
+  color: $color-primary;
+  font-family: $font-form;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: background-color $transition-base, color $transition-base;
+
+  &:hover,
+  &:focus-visible {
+    background-color: $color-primary;
+    color: $color-white;
+  }
+}
+
+.accordion-form__disclaimer {
+  font-size: 0.8125rem;
+  color: $color-input-placeholder;
+  text-align: center;
+  max-width: 640px;
+  margin: 0;
+}

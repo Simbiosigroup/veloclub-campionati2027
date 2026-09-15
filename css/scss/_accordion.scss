@@ -1,0 +1,111 @@
+// ==========================================================================
+// Barra informazioni rapide / Accordion (Soggiorno - Area Team)
+// Stati e misure verificati sul file Figma (Dev Mode): Default, Hover, Open
+// ==========================================================================
+
+.info-links {
+  background-color: $color-white;
+}
+
+.accordion__item {
+  border-top: 1px solid $color-divider;
+
+  &:last-child {
+    border-bottom: 1px solid $color-divider;
+  }
+
+  // Quando il pannello è aperto lo sfondo della sezione diventa azzurro
+  // chiaro (#ebf3fa), esattamente come nel componente Figma "State=Open".
+  &.is-open {
+    background-color: $color-panel-bg;
+  }
+}
+
+.accordion__trigger {
+  @include button-reset;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-height: 88px;
+  padding: 20px 0;
+  text-align: left;
+  color: $color-primary;
+  background-color: $color-white;
+  font-family: $font-heading;
+  font-weight: 700;
+  font-size: clamp(1.05rem, 0.85rem + 1.1vw, 2.125rem); // 34px a 1440px, come da Figma
+  text-transform: uppercase;
+  letter-spacing: 0.2px;
+  transition: background-color $transition-base, color $transition-base;
+
+  // Stato "Hover": sfondo e testo invertiti (blu piena / bianco), come
+  // indicato nel file Figma. Si applica solo quando il pannello è chiuso:
+  // da aperto l'header resta bianco/blu anche in hover (stato "Open").
+  &:hover:not([aria-expanded="true"]),
+  &:focus-visible:not([aria-expanded="true"]) {
+    background-color: $color-primary;
+    color: $color-white;
+  }
+}
+
+// Riga di testo dell'header, contenuta in una colonna di lettura di 1000px
+// (proporzione presa dal frame Figma a 1440px: padding 220px per lato).
+.accordion__trigger-inner {
+  width: 100%;
+  max-width: $accordion-content-max-width;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 0 $container-padding;
+
+  @include mq($bp-xxl) {
+    padding: 0;
+  }
+}
+
+.accordion__icon {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: inherit;
+
+  svg {
+    width: 100%;
+    height: 100%;
+    transition: transform $transition-base;
+  }
+}
+
+// Freccia verso il basso in hover (stato "Hover" del componente Figma)
+.accordion__trigger:hover:not([aria-expanded="true"]) .accordion__icon svg,
+.accordion__trigger:focus-visible:not([aria-expanded="true"]) .accordion__icon svg {
+  transform: rotate(90deg);
+}
+
+// Freccia verso l'alto quando il pannello è aperto (stato "Open")
+.accordion__trigger[aria-expanded="true"] .accordion__icon svg {
+  transform: rotate(-90deg);
+}
+
+.accordion__panel {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.3s ease;
+
+  &.is-open {
+    max-height: 5000px; // valore alto per permettere la transizione anche con form lunghi
+  }
+}
+
+.accordion__panel-inner {
+  padding: 40px $container-padding 56px;
+
+  @include mq($bp-xxl) {
+    padding: 56px 40px 72px;
+  }
+}

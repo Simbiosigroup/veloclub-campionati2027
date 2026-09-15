@@ -1,0 +1,156 @@
+// ==========================================================================
+// Reset & base
+// ==========================================================================
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: $header-height; // per gli anchor sotto l'header fisso
+}
+
+body {
+  margin: 0;
+  font-family: $font-body;
+  color: $color-text;
+  background-color: $color-white;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: $color-primary;
+  text-decoration: none;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+h1, h2, h3, h4 {
+  font-family: $font-heading;
+  text-transform: uppercase;
+  margin: 0;
+  line-height: 1.15;
+  letter-spacing: 0.5px;
+}
+
+p {
+  margin: 0 0 1em;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.container {
+  @include container;
+}
+
+.section-title {
+  font-size: clamp(1.6rem, 1.2rem + 1.5vw, 2.4rem);
+  color: $color-navy;
+  margin-bottom: 32px;
+}
+
+// ==========================================================================
+// Bottoni
+// ==========================================================================
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 28px;
+  font-family: $font-body;
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  border-radius: $radius-sm;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: background-color $transition-base, color $transition-base, border-color $transition-base;
+}
+
+.btn--primary {
+  background-color: $color-primary;
+  color: $color-white;
+
+  &:hover,
+  &:focus-visible {
+    background-color: $color-primary-dark;
+  }
+}
+
+.btn--outline {
+  background-color: transparent;
+  border-color: $color-white;
+  color: $color-white;
+
+  &:hover,
+  &:focus-visible {
+    background-color: $color-white;
+    color: $color-primary;
+  }
+}
+
+// ==========================================================================
+// Focus visibile per accessibilità
+// ==========================================================================
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 3px solid $color-navy;
+  outline-offset: 2px;
+}
+
+.visually-hidden {
+  @include visually-hidden;
+}
+
+// ==========================================================================
+// Esito invio form (Soggiorno, Area Team, Richiedi info)
+// ==========================================================================
+
+.form-feedback {
+  grid-column: 1 / -1;
+  margin: 0 0 20px;
+  padding: 12px 16px;
+  border-radius: $radius-sm;
+  font-family: $font-form;
+  font-size: 0.95rem;
+  line-height: 1.4;
+
+  &--success {
+    background-color: rgba($color-success, 0.12);
+    border: 1px solid rgba($color-success, 0.35);
+    color: darken($color-success, 12%);
+  }
+
+  &--error {
+    background-color: rgba(#c0392b, 0.1);
+    border: 1px solid rgba(#c0392b, 0.35);
+    color: #c0392b;
+
+    a {
+      color: inherit;
+      text-decoration: underline;
+    }
+  }
+}

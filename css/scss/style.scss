@@ -1,0 +1,18 @@
+// ==========================================================================
+// Campionati Italiani Giovanili Ciclocross 2027 — foglio di stile principale
+// Compilare con: sass css/scss/style.scss css/style.css --style=compressed
+// ==========================================================================
+
+@import 'variables';
+@import 'fonts';
+@import 'mixins';
+@import 'base';
+@import 'header';
+@import 'hero';
+@import 'accordion';
+@import 'accordion-form';
+@import 'percorso';
+@import 'partners';
+@import 'contact';
+@import 'footer';
+@import 'modal';

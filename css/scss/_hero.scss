@@ -1,0 +1,278 @@
+// ==========================================================================
+// Hero
+// ==========================================================================
+
+// Tre immagini dedicate (banner-mobile.png, banner-tablet.png,
+// hero-illustration.jpg), una per fascia di risoluzione:
+// - mobile e tablet (< $bp-lg): layout "poster" preso dai frame Figma
+//   TABLET/MOBILE — titolo/data a piena larghezza in alto, ciclista al
+//   centro, fascia inferiore con località; il logo Velo Club è già
+//   incluso nell'immagine, in basso. Le immagini hanno le stesse
+//   dimensioni dei frame Figma (425×883 e 768×883, come l'altezza
+//   dell'hero in questa fascia), quindi bastano background-size: cover
+//   e background-position: center center per mostrarle 1:1, senza
+//   ritaglio;
+// - da $bp-lg (desktop): hero-illustration.jpg, layout di riferimento
+//   del cliente, invariato (illustrazione leggermente ingrandita e
+//   spostata a destra, testo affiancato al ciclista sulla destra).
+.hero {
+  position: relative;
+  overflow: hidden;
+  background-color: $color-sky;
+
+  // Altezza dei frame Figma TABLET/MOBILE. Da desktop resta quella del
+  // layout di riferimento del cliente ($hero-height).
+  height: 883px;
+
+  @include mq($bp-lg) {
+    height: $hero-height;
+  }
+}
+
+.hero__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-repeat: no-repeat;
+  background-color: $color-sky; // stesso azzurro del cielo nelle due immagini: si fondono senza cuciture quando lo sfondo è più largo dell'immagine
+  background-image: url('../images/banner-mobile.png');
+
+  // Dimensione nativa dell'immagine (nessun ingrandimento): con "cover" il
+  // ciclista e il logo verrebbero tagliati agli estremi della fascia
+  // mobile/tablet (es. poco sotto i 768px, appena prima del passaggio
+  // all'immagine tablet). A dimensione fissa l'immagine resta invariata e
+  // il resto dello sfondo viene riempito dal colore del cielo sopra.
+  background-size: 425px 883px;
+  background-position: center center; // mobile
+
+  @include mq($bp-md) {
+    background-image: url('../images/banner-tablet.png');
+    background-size: 768px 883px;
+    background-position: center center; // tablet
+  }
+
+  // Da $bp-lg: hero-illustration.jpg, inquadratura tarata sull'immagine
+  // di riferimento del cliente (illustrazione leggermente ingrandita e
+  // spostata a destra, cornice superiore libera sopra la bici).
+  // L'altezza del contenitore è fissa, quindi uno zoom in percentuale
+  // sull'altezza mantiene la stessa inquadratura assoluta a qualunque
+  // larghezza.
+  @include mq($bp-lg) {
+    background-image: url('../images/hero-illustration.jpg');
+    background-size: auto 105.4%;
+    background-position: 42% center;
+  }
+
+  // Oltre ~1680px lo zoom fisso non basta più a coprire la larghezza:
+  // torna a "cover" per evitare margini vuoti ai lati.
+  @include mq(1680px) {
+    background-size: cover;
+    background-position: center top;
+  }
+}
+
+.hero__content {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 16px;
+  padding-top: 24px;
+  padding-bottom: 24px;
+
+  @include mq($bp-md) {
+    padding-top: 40px;
+  }
+
+  @include mq($bp-lg) {
+    max-width: $hero-content-width; // contiene tutto il testo
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    padding-top: 64px;
+    padding-bottom: 40px;
+  }
+
+  @include mq($bp-xl) {
+    padding-top: 88px;
+  }
+}
+
+.hero__title-block {
+  // Larghezza del contenitore del titolo presa dai frame Figma
+  // TABLET/MOBILE: 220px su mobile, 590px da tablet. Da desktop il blocco
+  // torna libero (nessun limite), come nel layout di riferimento.
+  max-width: 220px;
+
+  @include mq($bp-md) {
+    max-width: 590px;
+  }
+
+  @include mq($bp-lg) {
+    max-width: none;
+    margin-left: 46%;
+  }
+}
+
+.hero__date {
+  font-family: $font-display; // Geogrotesque Stencil C, da Figma (nodo 145:8650)
+  font-weight: 700;
+  color: $color-white;
+  line-height: 1.05;
+  text-transform: uppercase;
+  margin: 0 0 16px;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+
+  // Dimensioni fisse dai frame Figma TABLET/MOBILE: 40px su mobile, 60px
+  // da tablet. Da desktop torna la dimensione fluida del layout di
+  // riferimento del cliente.
+  font-size: 40px;
+
+  // Larghezza del contenitore della data presa dai frame Figma
+  // TABLET/MOBILE: 160px su mobile, 590px da tablet.
+  max-width: 160px;
+
+  @include mq($bp-md) {
+    font-size: 60px;
+    max-width: 590px;
+  }
+
+  @include mq($bp-lg) {
+    font-size: clamp(1.8rem, 1.2rem + 2.5vw, 3.2rem);
+    position: absolute;
+    top: 64px;
+    // left:0 di un elemento assoluto si allinea al padding-box del
+    // genitore (bordo esterno del padding), quindi ignora il padding
+    // interno di $container-padding: qui lo ripristiniamo esplicitamente
+    // per non far toccare il testo al bordo della finestra (es. a 768px,
+    // dove .hero__content occupa tutta la larghezza del viewport).
+    left: $container-padding;
+    margin: 0;
+    max-width: none;
+  }
+
+  @include mq($bp-xl) {
+    top: 88px;
+  }
+}
+
+// Sui frame TABLET del Figma la data sta su un'unica riga ("5-6 GENNAIO
+// 2027"); su MOBILE e su desktop resta invece impilata su tre righe: si
+// nasconde quindi il <br> solo nella fascia tablet.
+.hero__date-break {
+  @include mq($bp-md) {
+    display: none;
+  }
+
+  @include mq($bp-lg) {
+    display: inline;
+  }
+}
+
+.hero__title {
+  font-family: $font-display; // Geogrotesque Stencil C, da Figma (nodo 145:8655)
+  color: $color-white;
+  margin-bottom: 12px;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+
+  // Dimensioni fisse dai frame Figma TABLET/MOBILE: 40px su mobile, 60px
+  // da tablet. Da desktop torna la dimensione fluida del layout di
+  // riferimento del cliente.
+  font-size: 40px;
+
+  @include mq($bp-md) {
+    font-size: 60px;
+  }
+
+  @include mq($bp-lg) {
+    font-size: clamp(1.6rem, 1rem + 3vw, 3.4rem);
+  }
+}
+
+.hero__subtitle {
+  font-family: $font-form; // Inter Bold, da Figma Dev Mode (nodo 145:8656)
+  font-weight: 700;
+  color: $color-white;
+  font-size: clamp(1rem, 0.8rem + 1vw, 1.5rem);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin: 0;
+
+  // Su mobile e tablet la località si sposta nella fascia inferiore
+  // (.hero__info, vedi sotto): qui resta visibile solo da desktop.
+  display: none;
+
+  @include mq($bp-lg) {
+    display: block;
+  }
+}
+
+// ==========================================================================
+// Località (mobile e tablet), sovrapposta in basso a banner-mobile.png /
+// banner-tablet.png come nei frame Figma TABLET/MOBILE (il logo Velo Club
+// è già incluso in quelle immagini, non va quindi ripetuto qui). Da $bp-lg
+// non è prevista: la località torna ad essere .hero__subtitle, sotto al
+// titolo.
+// ==========================================================================
+
+.hero__info {
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: 1;
+
+  // Posizione presa dai frame Figma MOBILE (290:959, top: 763px su 883px
+  // di altezza) e TABLET (290:2657, top: 784px). Su mobile spostata 40px
+  // più in alto per lasciare margine al testo quando va su due righe
+  // sotto i 400px di larghezza.
+  top: 723px;
+
+  @include mq($bp-md) {
+    top: 784px;
+  }
+
+  @include mq($bp-lg) {
+    display: none;
+  }
+}
+
+.hero__location {
+  font-family: $font-form; // Inter Bold, come .hero__subtitle
+  font-weight: 700;
+  color: $color-white;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  text-align: center;
+  margin: 0;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+
+  // Dimensioni fisse dai frame Figma TABLET/MOBILE: 20px su mobile, 30px
+  // da tablet.
+  font-size: 20px;
+
+  @include mq($bp-md) {
+    font-size: 30px;
+    text-align: left;
+  }
+}
+
+// Mobile: una riga unica ("Cattolica - Misano Adriatico"), come nel frame
+// Figma MOBILE. Tablet: due righe senza trattino ("Cattolica" /
+// "Misano Adriatico"), come nel frame Figma TABLET.
+.hero__location-dash {
+  @include mq($bp-md) {
+    display: none;
+  }
+}
+
+.hero__location-break {
+  display: none;
+
+  @include mq($bp-md) {
+    display: inline;
+  }
+}
+

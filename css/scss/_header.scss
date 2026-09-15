@@ -1,0 +1,190 @@
+// ==========================================================================
+// Header
+// ==========================================================================
+
+.site-header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background-color: $color-primary;
+  height: $header-height;
+  display: flex;
+  align-items: center;
+}
+
+.header__inner {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  max-width: $header-width;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.logo {
+  font-family: $font-display; // Geogrotesque Stencil C, da Figma (nodo 33:1557)
+  color: $color-white;
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 19px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  flex-shrink: 0;
+}
+
+.main-nav {
+  position: fixed;
+  top: $header-height;
+  left: 0;
+  right: 0;
+  background-color: $color-primary;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height $transition-base;
+
+  &.is-open {
+    max-height: 400px;
+  }
+
+  ul {
+    display: flex;
+    flex-direction: column;
+    padding: 8px $container-padding 16px;
+  }
+
+  a {
+    display: block;
+    padding: 12px 0;
+    color: $color-white;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 1px solid rgba($color-white, 0.15);
+  }
+
+  @include mq($bp-lg) {
+    position: static;
+    max-height: none;
+    overflow: visible;
+    background: none;
+    // Le voci di menu si dispongono subito a sinistra del pulsante
+    // "Richiedi info" (non centrate/distribuite sull'intera larghezza).
+    margin-left: auto;
+
+    ul {
+      flex-direction: row;
+      align-items: flex-start;
+      padding: 0;
+      gap: 28px;
+    }
+
+    // Stati verificati su Figma Dev Mode (nodo 33:1433): Default, Hover,
+    // Open (voce corrente). La sottolineatura è sempre presente ma
+    // trasparente di default, per evitare un salto di layout al passaggio
+    // del mouse; diventa visibile in hover e nella voce attiva.
+    a {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3px;
+      padding: 0;
+      border-bottom: none;
+      font-family: $font-form;
+      font-weight: 600;
+      font-size: 0.6875rem; // 11px
+      letter-spacing: 0.5px;
+      color: $color-white;
+      white-space: nowrap;
+      transition: color $transition-base;
+
+      &::after {
+        content: '';
+        display: block;
+        width: 100%;
+        height: 2px;
+        background-color: transparent;
+        transition: background-color $transition-base;
+      }
+
+      &:hover,
+      &:focus-visible {
+        color: #d0e5f4;
+
+        &::after {
+          background-color: #d0e5f4;
+        }
+      }
+
+      &[aria-current="page"]::after {
+        background-color: #ebf3fa;
+      }
+    }
+  }
+}
+
+.header__cta {
+  display: none;
+
+  @include mq($bp-lg) {
+    display: inline-flex;
+  }
+}
+
+.nav-toggle {
+  @include button-reset;
+  width: 36px;
+  height: 28px;
+  position: relative;
+  flex-shrink: 0;
+  margin-left: auto; // resta a destra su mobile (nav e cta non sono in flusso)
+
+  span,
+  span::before,
+  span::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background-color: $color-white;
+    border-radius: 2px;
+    transition: transform $transition-base, opacity $transition-base;
+  }
+
+  span {
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  span::before {
+    top: -10px;
+  }
+
+  span::after {
+    top: 10px;
+  }
+
+  &[aria-expanded="true"] {
+    span {
+      background-color: transparent;
+    }
+
+    span::before {
+      top: 0;
+      transform: rotate(45deg);
+    }
+
+    span::after {
+      top: 0;
+      transform: rotate(-45deg);
+    }
+  }
+
+  @include mq($bp-lg) {
+    display: none;
+  }
+}

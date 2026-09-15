@@ -1,0 +1,141 @@
+// ==========================================================================
+// Footer
+// ==========================================================================
+
+.site-footer {
+  background-color: $color-sky;
+  color: $color-white;
+}
+
+.footer__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  width: 100%;
+  max-width: $footer-width;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 48px $container-padding;
+
+  @include mq($bp-md) {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+.footer__brand {
+  font-family: $font-display; // Geogrotesque Stencil C, come titolo/data della hero
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 22px;
+  line-height: 19px;
+}
+
+.footer__nav {
+  display: flex;
+  gap: 34px; // distanza orizzontale tra i due gruppi di link
+
+  ul {
+    display: flex;
+    flex-direction: column;
+    gap: 11px; // distanza verticale tra le voci di ogni gruppo
+  }
+
+  a {
+    display: block;
+    color: $color-white;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    padding: 6px 0;
+    opacity: 0.9;
+
+    &:hover,
+    &:focus-visible {
+      opacity: 1;
+      text-decoration: underline;
+    }
+  }
+}
+
+.footer__contacts {
+  font-size: 0.9rem;
+
+  p {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  a {
+    color: $color-white;
+    font-weight: 600;
+  }
+}
+
+.footer__social {
+  display: flex;
+  gap: 14px;
+  margin-top: 22px;
+
+  a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    border: 1px solid rgba($color-white, 0.6);
+    transition: background-color $transition-base;
+
+    svg {
+      width: 16px;
+      height: 16px;
+      fill: $color-white;
+    }
+
+    &:hover,
+    &:focus-visible {
+      background-color: rgba($color-white, 0.15);
+    }
+  }
+}
+
+.footer__bottom {
+  background-color: rgba(0, 0, 0, 0.12);
+}
+
+.footer__bottom-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  max-width: $footer-width;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 18px $container-padding;
+  font-size: 0.78rem;
+
+  @include mq($bp-md) {
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: left;
+  }
+}
+
+.footer__legal {
+  display: flex;
+  gap: 20px;
+
+  a {
+    color: $color-white;
+    opacity: 0.85;
+
+    &:hover,
+    &:focus-visible {
+      opacity: 1;
+      text-decoration: underline;
+    }
+  }
+}

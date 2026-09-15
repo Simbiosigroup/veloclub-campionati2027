@@ -1,0 +1,64 @@
+// ==========================================================================
+// Variabili globali
+// ==========================================================================
+
+// Colori (estratti dal layout di riferimento e dal file Figma - Dev Mode)
+$color-primary:        #3773b9; // blu header / nav / link / accordion (da Figma)
+$color-primary-dark:   #2c5c94;
+$color-primary-darker: #273962; // hover bottoni grandi "BOTTONE" (da Figma, nodo 41:33)
+$color-sky:            #6ca5da; // blu chiaro hero / footer
+$color-navy:           #0c3273; // blu scuro (mappa, dettagli)
+$color-sand:           #d1c08a; // sabbia
+$color-taupe:          #8c7d6b; // duna / collina hero
+
+$color-white:          #ffffff;
+$color-off-white:      #f4f7fb;
+$color-text:           #1d2733;
+$color-text-light:     #5b6773;
+$color-border:         #e1e6ec;
+
+$color-success:        #2f9e57;
+
+// Colori specifici del componente accordion / form (da Figma - Dev Mode)
+$color-panel-bg:        #ebf3fa; // sfondo pannello accordion aperto
+$color-divider:         #e0e0e0; // divider tra header accordion
+$color-input-border:    #d4d4d4; // bordo input/select/textarea/card
+$color-input-placeholder: #9a9a9a;
+$color-label:           #3d3d3d;
+$color-heading-dark:    #111111;
+
+// Font (self-hosted, file .woff2 in /fonts)
+// Verificati su Figma Dev Mode: il titolo hero (nodo 145:8655/145:8650) usa
+// Geogrotesque Stencil C, ma TUTTI gli altri titoli del sito (accordion,
+// sezioni form, ecc. — es. nodi 15:4 e 15:18) usano Barlow Condensed.
+$font-display: 'Geogrotesque Stencil C', 'Arial Narrow', sans-serif; // SOLO titolo/data della hero
+$font-heading: 'Barlow Condensed', 'Arial Narrow', sans-serif; // titoli generali (accordion, sezioni, footer, bottoni)
+$font-body: 'Barlow', 'Segoe UI', Arial, sans-serif; // testo generale del sito (nav, hero, footer, contatti)
+$font-form: 'Inter', 'Segoe UI', Arial, sans-serif; // label/input/testo dei form "Soggiorno" e "Area Team" (da Figma Dev Mode)
+
+// Layout
+$container-max-width: 1760px; // pagina adattabile fino a 1920px di viewport
+$container-padding: 24px;
+$accordion-content-max-width: 1000px; // larghezza colonna di lettura header accordion (da Figma, 1000px su frame 1440px)
+$form-card-max-width: 1200px; // larghezza card del form (da Figma)
+$header-width: 1200px; // larghezza interna del blocco header/menu
+$partners-width: 1240px; // larghezza del blocco sponsor
+$footer-width: 1220px; // larghezza interna del footer (blocco principale e barra inferiore)
+$contact-width: 1000px; // larghezza del blocco "Richiedi info" (titolo + form), centrato
+$hero-height: 780px; // altezza del banner hero
+$hero-content-width: 1085px; // larghezza del container con il testo della hero (contiene tutto il testo)
+
+// Breakpoints
+$bp-xs: 400px;
+$bp-sm: 576px;
+$bp-md: 768px;
+$bp-lg: 1024px;
+$bp-xl: 1280px;
+$bp-xxl: 1600px;
+$bp-max: 1920px;
+
+// Altre variabili
+$radius-sm: 4px;
+$radius-md: 8px;
+$transition-base: 0.25s ease;
+$header-height: 84px;

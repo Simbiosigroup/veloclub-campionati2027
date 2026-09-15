@@ -1,0 +1,116 @@
+// ==========================================================================
+// Popup / Modale (es. Privacy Policy)
+// ==========================================================================
+
+body.modal-open {
+  overflow: hidden;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+
+  &.is-open {
+    display: flex;
+  }
+}
+
+.modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(#000000, 0.55);
+}
+
+.modal__dialog {
+  position: relative;
+  width: 100%;
+  max-width: 680px;
+  max-height: 85vh;
+  overflow-y: auto;
+  background-color: $color-white;
+  border-radius: $radius-md;
+  box-shadow: 0 20px 60px rgba(#000000, 0.3);
+  padding: 44px 28px 32px;
+
+  &:focus-visible {
+    outline: none;
+  }
+
+  @include mq($bp-md) {
+    padding: 48px 48px 40px;
+  }
+}
+
+.modal__close {
+  @include button-reset;
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: $color-text-light;
+  transition: background-color $transition-base, color $transition-base;
+
+  svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  &:hover,
+  &:focus-visible {
+    background-color: $color-off-white;
+    color: $color-primary;
+  }
+}
+
+.modal__body {
+  h2 {
+    font-size: 1.4rem;
+    color: $color-navy;
+    text-transform: uppercase;
+    margin: 0 0 16px;
+  }
+
+  h3 {
+    font-size: 1rem;
+    color: $color-primary;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    margin: 24px 0 8px;
+
+    &:first-of-type {
+      margin-top: 20px;
+    }
+  }
+
+  p {
+    font-family: $font-body;
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    color: $color-text;
+    margin: 0 0 12px;
+  }
+
+  a {
+    color: $color-primary;
+    font-weight: 600;
+  }
+}
+
+.modal__disclaimer {
+  margin-top: 24px !important;
+  padding-top: 16px;
+  border-top: 1px solid $color-divider;
+  font-size: 0.8125rem !important;
+  font-style: italic;
+  color: $color-text-light !important;
+}

@@ -1,0 +1,13 @@
+// ==========================================================================
+// Percorso (mappa)
+// ==========================================================================
+
+.percorso {
+  background-color: $color-navy;
+  line-height: 0; // rimuove lo spazio extra sotto l'img
+}
+
+.percorso__img {
+  width: 100%;
+  height: auto;
+}
