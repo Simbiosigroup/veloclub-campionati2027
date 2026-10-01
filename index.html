@@ -260,6 +260,13 @@
                     </div>
                   </div>
 
+                  <div class="accordion-form__field accordion-form__field--consent">
+                    <label class="checkbox">
+                      <input type="checkbox" name="privacy" required>
+                      <span>Ho letto e accetto la <a href="#" data-modal-trigger="privacy-modal">Privacy Policy</a>*</span>
+                    </label>
+                  </div>
+
                   <div class="accordion-form__submit-wrap">
                     <button type="submit" class="accordion-form__submit">Richiedi disponibilità</button>
                     <p class="accordion-form__disclaimer">La compilazione del form non costituisce una prenotazione. La richiesta verrà inoltrata alle strutture aderenti e riceverai una risposta via e-mail.</p>
@@ -422,6 +429,13 @@
                     </div>
                   </div>
 
+                  <div class="accordion-form__field accordion-form__field--consent">
+                    <label class="checkbox">
+                      <input type="checkbox" name="privacy" required>
+                      <span>Ho letto e accetto la <a href="#" data-modal-trigger="privacy-modal">Privacy Policy</a>*</span>
+                    </label>
+                  </div>
+
                   <div class="accordion-form__submit-wrap">
                     <button type="submit" class="accordion-form__submit">Invia richiesta</button>
                     <p class="accordion-form__disclaimer">La compilazione del form non costituisce una conferma automatica. La richiesta verrà verificata dall'organizzazione e riceverai una risposta via e-mail.</p>
@@ -454,6 +468,9 @@
             </div>
             <div class="swiper-slide">
               <img src="images/logo-fci.svg" alt="Federazione Ciclistica Italiana" class="partners__logo">
+            </div>
+            <div class="swiper-slide">
+              <img src="images/valle-del-conca.svg" alt="Valle del Conca" class="partners__logo">
             </div>
           </div>
           <div class="swiper-button-prev" aria-label="Sponsor precedente"></div>

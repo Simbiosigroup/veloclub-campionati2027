@@ -15,7 +15,7 @@
 // ---------------------------------------------------------------------------
 
 // Destinatario di tutte le richieste.
-const TO_EMAIL = 'veloclub.cattolica@email.it';
+const TO_EMAIL = 'veloclubcattolicaasd@gmail.com';
 
 // Mittente "tecnico" della mail (deve appartenere allo stesso dominio del
 // sito per non finire in spam, o peggio essere scartata: un mittente
@@ -44,7 +44,7 @@ $forms = [
     'soggiorno' => [
         'label' => 'Richiesta soggiorno',
         'anchor' => 'soggiorno',
-        'required' => ['team', 'referente', 'email'],
+        'required' => ['team', 'referente', 'email', 'privacy'],
         'fields' => [
             'team' => 'Nome della società / Team',
             'referente' => 'Referente',
@@ -65,7 +65,7 @@ $forms = [
     'area-team' => [
         'label' => 'Accrediti Area Team',
         'anchor' => 'area-team',
-        'required' => ['team', 'referente', 'email'],
+        'required' => ['team', 'referente', 'email', 'privacy'],
         'fields' => [
             'team' => 'Nome della società / Team',
             'referente' => 'Referente',
