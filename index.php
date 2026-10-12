@@ -91,7 +91,7 @@
                   </div>
 
                   <p class="form-feedback form-feedback--success" data-form-feedback="sent" hidden>Richiesta inviata, grazie! Ti risponderemo via e-mail.</p>
-                  <p class="form-feedback form-feedback--error" data-form-feedback="error" hidden>Non è stato possibile inviare la richiesta. Controlla i campi obbligatori e riprova, oppure scrivi a <a href="mailto:veloclub.cattolica@email.it">veloclub.cattolica@email.it</a>.</p>
+                  <p class="form-feedback form-feedback--error" data-form-feedback="error" hidden>Non è stato possibile inviare la richiesta. Controlla i campi obbligatori e riprova, oppure scrivi a <a href="mailto:veloclubcattolicaasd@gmail.com">veloclubcattolicaasd@gmail.com</a>.</p>
 
                   <div class="accordion-form__row">
                     <div class="accordion-form__col">
@@ -302,7 +302,7 @@
                   </div>
 
                   <p class="form-feedback form-feedback--success" data-form-feedback="sent" hidden>Richiesta inviata, grazie! Ti risponderemo via e-mail.</p>
-                  <p class="form-feedback form-feedback--error" data-form-feedback="error" hidden>Non è stato possibile inviare la richiesta. Controlla i campi obbligatori e riprova, oppure scrivi a <a href="mailto:veloclub.cattolica@email.it">veloclub.cattolica@email.it</a>.</p>
+                  <p class="form-feedback form-feedback--error" data-form-feedback="error" hidden>Non è stato possibile inviare la richiesta. Controlla i campi obbligatori e riprova, oppure scrivi a <a href="mailto:veloclubcattolicaasd@gmail.com">veloclubcattolicaasd@gmail.com</a>.</p>
 
                   <div class="accordion-form__section">
                     <h3 class="accordion-form__section-title">Dati del richiedente</h3>
@@ -461,16 +461,22 @@
         <div class="swiper partners__swiper" data-partners-carousel>
           <div class="swiper-wrapper">
             <div class="swiper-slide">
-              <img src="images/logo-misano.svg" alt="Comune di Misano Adriatico" class="partners__logo">
-            </div>
-            <div class="swiper-slide">
               <img src="images/logo-comune-cattolica.svg" alt="Comune di Cattolica" class="partners__logo">
             </div>
             <div class="swiper-slide">
-              <img src="images/logo-fci.svg" alt="Federazione Ciclistica Italiana" class="partners__logo">
+              <img src="images/CattolicaSport.jpg" alt="Cattolica European Town of Sport 2027" class="partners__logo partners__logo--lg">
             </div>
             <div class="swiper-slide">
-              <img src="images/valle-del-conca.svg" alt="Valle del Conca" class="partners__logo">
+              <img src="images/logo-misano.svg" alt="Comune di Misano Adriatico" class="partners__logo">
+            </div>
+            <div class="swiper-slide">
+              <img src="images/EmiliaRomagna.svg" alt="Regione Emilia-Romagna" class="partners__logo partners__logo--lg">
+            </div>
+            <div class="swiper-slide">
+              <img src="images/logo-fci.svg" alt="FCI Comitato Regionale Emilia Romagna" class="partners__logo">
+            </div>
+            <div class="swiper-slide">
+              <img src="images/Coni.png" alt="CONI Comitato Regionale Emilia Romagna" class="partners__logo partners__logo--lg">
             </div>
           </div>
           <div class="swiper-button-prev" aria-label="Sponsor precedente"></div>
@@ -491,7 +497,7 @@
           </div>
 
           <p class="form-feedback form-feedback--success" data-form-feedback="sent" hidden>Richiesta inviata, grazie! Ti risponderemo via e-mail.</p>
-          <p class="form-feedback form-feedback--error" data-form-feedback="error" hidden>Non è stato possibile inviare la richiesta. Controlla i campi obbligatori e riprova, oppure scrivi a <a href="mailto:veloclub.cattolica@email.it">veloclub.cattolica@email.it</a>.</p>
+          <p class="form-feedback form-feedback--error" data-form-feedback="error" hidden>Non è stato possibile inviare la richiesta. Controlla i campi obbligatori e riprova, oppure scrivi a <a href="mailto:veloclubcattolicaasd@gmail.com">veloclubcattolicaasd@gmail.com</a>.</p>
 
           <div class="form-row">
             <label for="nome">Nome e cognome*</label>
@@ -557,7 +563,7 @@
       </nav>
 
       <div class="footer__contacts">
-        <p><a href="mailto:veloclub.cattolica@email.it">veloclub.cattolica@email.it</a></p>
+        <p><a href="mailto:veloclubcattolicaasd@gmail.com">veloclubcattolicaasd@gmail.com</a></p>
         <p>Veloclub Cattolica<br>Cattolica, Italia</p>
 
         <div class="footer__social">

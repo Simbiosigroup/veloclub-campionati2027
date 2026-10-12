@@ -12,20 +12,24 @@
 //   dell'hero in questa fascia), quindi bastano background-size: cover
 //   e background-position: center center per mostrarle 1:1, senza
 //   ritaglio;
-// - da $bp-lg (desktop): hero-illustration.jpg, layout di riferimento
-//   del cliente, invariato (illustrazione leggermente ingrandita e
-//   spostata a destra, testo affiancato al ciclista sulla destra).
+// - da $bp-lg (desktop): hero-illustration.jpg (1920×855), mostrata
+//   SEMPRE per intero, senza tagli, a qualunque larghezza: l'altezza
+//   dell'hero segue il rapporto dell'immagine (aspect-ratio) e lo sfondo
+//   si adatta al 100% del contenitore, quindi le proporzioni sono sempre
+//   quelle originali. Testo affiancato al ciclista sulla destra.
 .hero {
   position: relative;
   overflow: hidden;
   background-color: $color-sky;
 
-  // Altezza dei frame Figma TABLET/MOBILE. Da desktop resta quella del
-  // layout di riferimento del cliente ($hero-height).
+  // Altezza dei frame Figma TABLET/MOBILE. Da desktop l'altezza non è più
+  // fissa: segue il rapporto dell'immagine (1920×855), così l'illustrazione
+  // si vede sempre per intero, senza ritagli, a qualunque larghezza.
   height: 883px;
 
   @include mq($bp-lg) {
-    height: $hero-height;
+    height: auto;
+    aspect-ratio: $hero-image-ratio;
   }
 }
 
@@ -51,23 +55,13 @@
     background-position: center center; // tablet
   }
 
-  // Da $bp-lg: hero-illustration.jpg, inquadratura tarata sull'immagine
-  // di riferimento del cliente (illustrazione leggermente ingrandita e
-  // spostata a destra, cornice superiore libera sopra la bici).
-  // L'altezza del contenitore è fissa, quindi uno zoom in percentuale
-  // sull'altezza mantiene la stessa inquadratura assoluta a qualunque
-  // larghezza.
+  // Da $bp-lg: hero-illustration.jpg per intero. Il contenitore ha lo
+  // stesso rapporto dell'immagine (vedi .hero), quindi 100% × 100% mostra
+  // l'illustrazione completa, senza tagli e senza deformazioni.
   @include mq($bp-lg) {
     background-image: url('../images/hero-illustration.jpg');
-    background-size: auto 105.4%;
-    background-position: 42% center;
-  }
-
-  // Oltre ~1680px lo zoom fisso non basta più a coprire la larghezza:
-  // torna a "cover" per evitare margini vuoti ai lati.
-  @include mq(1680px) {
-    background-size: cover;
-    background-position: center top;
+    background-size: 100% 100%;
+    background-position: center center;
   }
 }
 
@@ -87,17 +81,19 @@
     padding-top: 40px;
   }
 
+  // Da $bp-lg l'illustrazione si ridimensiona con la larghezza della
+  // finestra (vedi .hero): anche il testo scala con lei, in vw, così la
+  // composizione resta identica a qualunque risoluzione e il testo non va
+  // mai a sovrapporsi al ciclista o alle barche a vela.
   @include mq($bp-lg) {
-    max-width: $hero-content-width; // contiene tutto il testo
-    margin-left: auto;
-    margin-right: auto;
+    max-width: none;
+    margin-left: 0;
+    margin-right: 0;
     display: block;
-    padding-top: 64px;
-    padding-bottom: 40px;
-  }
-
-  @include mq($bp-xl) {
-    padding-top: 88px;
+    padding-top: 5vw;
+    padding-bottom: 0;
+    padding-left: 0;
+    padding-right: 0;
   }
 }
 
@@ -113,7 +109,7 @@
 
   @include mq($bp-lg) {
     max-width: none;
-    margin-left: 46%;
+    margin-left: 47vw;
   }
 }
 
@@ -141,21 +137,12 @@
   }
 
   @include mq($bp-lg) {
-    font-size: clamp(1.8rem, 1.2rem + 2.5vw, 3.2rem);
+    font-size: 4vw;
     position: absolute;
-    top: 64px;
-    // left:0 di un elemento assoluto si allinea al padding-box del
-    // genitore (bordo esterno del padding), quindi ignora il padding
-    // interno di $container-padding: qui lo ripristiniamo esplicitamente
-    // per non far toccare il testo al bordo della finestra (es. a 768px,
-    // dove .hero__content occupa tutta la larghezza del viewport).
-    left: $container-padding;
+    top: 5vw;
+    left: 9.5vw; // a sinistra del ciclista, che occupa circa il 20–44% della larghezza
     margin: 0;
     max-width: none;
-  }
-
-  @include mq($bp-xl) {
-    top: 88px;
   }
 }
 
@@ -188,7 +175,8 @@
   }
 
   @include mq($bp-lg) {
-    font-size: clamp(1.6rem, 1rem + 3vw, 3.4rem);
+    font-size: 4.25vw;
+    margin-bottom: 0.9vw;
   }
 }
 
@@ -207,6 +195,7 @@
 
   @include mq($bp-lg) {
     display: block;
+    font-size: 2vw;
   }
 }
 

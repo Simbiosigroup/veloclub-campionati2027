@@ -45,7 +45,8 @@ $header-width: 1200px; // larghezza interna del blocco header/menu
 $partners-width: 1240px; // larghezza del blocco sponsor
 $footer-width: 1220px; // larghezza interna del footer (blocco principale e barra inferiore)
 $contact-width: 1000px; // larghezza del blocco "Richiedi info" (titolo + form), centrato
-$hero-height: 780px; // altezza del banner hero
+$hero-image-ratio: #{1920} / #{855}; // proporzioni di hero-illustration.jpg: l'hero desktop le segue per mostrarla sempre intera
+$hero-height: 780px; // (non più usata dalla hero desktop) altezza storica del banner hero
 $hero-content-width: 1085px; // larghezza del container con il testo della hero (contiene tutto il testo)
 
 // Breakpoints

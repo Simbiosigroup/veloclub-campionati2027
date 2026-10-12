@@ -47,3 +47,13 @@
     height: 56px;
   }
 }
+
+// Loghi con molto testo piccolo (Regione Emilia-Romagna, Cattolica European
+// Town of Sport): a parità di altezza risultano illeggibili, quindi più alti.
+.partners__logo--lg {
+  height: 72px;
+
+  @include mq($bp-lg) {
+    height: 96px;
+  }
+}
