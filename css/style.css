@@ -1045,6 +1045,44 @@ select:focus-visible {
   margin: 0 auto;
 }
 
+.accordion-form__intro {
+  font-family: "Inter", "Segoe UI", Arial, sans-serif;
+  font-weight: 600;
+  font-size: 0.875rem;
+  line-height: 18px;
+  color: #111111;
+  padding: 0 21px;
+  margin-bottom: 48px;
+}
+@media (min-width: 768px) {
+  .accordion-form__intro {
+    padding: 0 41px;
+  }
+}
+@media (min-width: 1024px) {
+  .accordion-form__intro {
+    padding: 0 101px;
+    margin-top: 24px;
+  }
+}
+.accordion-form__intro p {
+  margin: 0;
+}
+.accordion-form__intro ul {
+  list-style: disc;
+  margin: 16px 0;
+  padding-left: 20px;
+}
+.accordion-form__intro li {
+  margin: 0;
+}
+.accordion-form__intro strong {
+  font-weight: 800;
+}
+.accordion-form__intro em {
+  font-style: italic;
+}
+
 .accordion-form__card {
   background-color: #ffffff;
   border: 1px solid #d4d4d4;

@@ -9,6 +9,51 @@
   margin: 0 auto;
 }
 
+// Testo introduttivo sopra al form Area Team (regole di accesso dei mezzi).
+// Allineato al contenuto interno della card (bordo 1px + padding della card,
+// stessi breakpoint di .accordion-form__card), così il testo parte alla
+// stessa x dei titoli di sezione e dei campi.
+.accordion-form__intro {
+  font-family: $font-form;
+  font-weight: 600;
+  font-size: 0.875rem; // 14px
+  line-height: 18px;
+  color: $color-heading-dark;
+  padding: 0 21px;
+  margin-bottom: 48px;
+
+  @include mq($bp-md) {
+    padding: 0 41px;
+  }
+
+  @include mq($bp-lg) {
+    padding: 0 101px;
+    margin-top: 24px;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  ul {
+    list-style: disc;
+    margin: 16px 0;
+    padding-left: 20px;
+  }
+
+  li {
+    margin: 0;
+  }
+
+  strong {
+    font-weight: 800;
+  }
+
+  em {
+    font-style: italic;
+  }
+}
+
 .accordion-form__card {
   background-color: $color-white;
   border: 1px solid $color-input-border;

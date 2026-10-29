@@ -232,10 +232,9 @@
   });
 
   /* --------------------------------------------------------------------
-   * Selezione a card singola (radiogroup): "Trattamento desiderato" e
-   * "Tipologia di mezzo"
+   * Selezione a card singola (radiogroup): "Trattamento desiderato"
    * ------------------------------------------------------------------ */
-  document.querySelectorAll('.treatment-options, .vehicle-options').forEach(function (group) {
+  document.querySelectorAll('.treatment-options').forEach(function (group) {
     var cards = group.querySelectorAll('.treatment-card');
     var hiddenInput = group.querySelector('[data-treatment-input]');
 
@@ -250,6 +249,38 @@
         if (hiddenInput) {
           hiddenInput.value = card.getAttribute('data-treatment') || card.getAttribute('data-vehicle-type') || '';
         }
+      });
+    });
+  });
+
+  /* --------------------------------------------------------------------
+   * Selezione a card MULTIPLA (group di checkbox): "Tipologia di mezzo"
+   * (Accrediti Area Team). Ogni card si attiva/disattiva da sola; i valori
+   * scelti finiscono, separati da virgola, nel campo nascosto tipo_mezzo.
+   * ------------------------------------------------------------------ */
+  document.querySelectorAll('.vehicle-options').forEach(function (group) {
+    var cards = group.querySelectorAll('.treatment-card');
+    var hiddenInput = group.querySelector('[data-treatment-input]');
+
+    function syncHiddenInput() {
+      if (!hiddenInput) {
+        return;
+      }
+      var values = [];
+      cards.forEach(function (c) {
+        if (c.classList.contains('is-selected')) {
+          values.push(c.getAttribute('data-vehicle-type'));
+        }
+      });
+      hiddenInput.value = values.join(', ');
+    }
+
+    cards.forEach(function (card) {
+      card.addEventListener('click', function () {
+        var selected = !card.classList.contains('is-selected');
+        card.classList.toggle('is-selected', selected);
+        card.setAttribute('aria-checked', selected ? 'true' : 'false');
+        syncHiddenInput();
       });
     });
   });
